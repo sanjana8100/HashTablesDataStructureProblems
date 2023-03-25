@@ -1,5 +1,7 @@
 package com.bridgelabz.HashTables;
 
+import com.bridgelabz.LinkedList.Node;
+
 public class HashLinkedList<K,V> {
     HashNode<K, V> head;
     HashNode<K, V> tail;
@@ -77,6 +79,27 @@ public class HashLinkedList<K,V> {
             newNode.next = searchedNode.next;
             searchedNode.next = newNode;
             return true;
+        }
+        return false;
+    }
+
+    public boolean delete(K key) {
+        HashNode<K, V> temp = head;
+        HashNode<K, V> temp2 = head;
+        HashNode<K, V> temp3 = head;
+        int count = 0;
+        while (temp != null & temp2 != null & temp3 != null) {
+            count++;
+            if (count > 2) {
+                temp3 = temp3.next;
+            }
+            if (temp.key == key) {
+                temp2 = temp2.next;
+                temp3.next = temp2;
+                return true;
+            }
+            temp = temp.next;
+            temp2 = temp2.next;
         }
         return false;
     }
